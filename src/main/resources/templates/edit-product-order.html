@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Grids & Circles</title>
+</head>
+<body class="container-fluid">
+<h1>Grids & Circles</h1>
+<h2>Production Order Management</h2>
+<form th:action method="post">
+    <div class="mb-3">
+        <label for="orderId" class="form-label">OrderId</label>
+        <input type="text" class="form-control" id="orderId" name="orderId" th:value="${order.orderId}" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="text" class="form-control" id="email" name="email" th:value="${order.email}">
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" name="address" th:value="${order.address}">
+    </div>
+    <div class="mb-3">
+        <label for="postcode" class="form-label">PostCode</label>
+        <textarea class="form-control" id="postcode" name="postcode" rows="3" th:text="${order.postcode}"></textarea>
+    </div>
+    <div class="mb-3">
+        <label for="orderStatus" class="form-label">OrderStatus</label>
+        <select id="orderStatus" name="orderStatus" class="form-select">
+            <option selected>Open this select menu</option>
+            <option value="ACCEPTED">ACCEPTED</option>
+            <option value="PAYMENT_CONFIRMED">PAYMENT CONFIRMED</option>
+            <option value="READY_FOR_DELIVERY">READY FOR DELIVERY</option>
+            <option value="SHIPPED">SHIPPED</option>
+            <option value="SETTLED">SETTLED</option>
+            <option value="CANCELLED">CANCELLED</option>
+        </select>
+    </div>
+    <div class="mb-3" hidden="hidden">
+        <label for="createdAt" class="form-label">CreatedAt</label>
+        <input type="text" class="form-control" id="createdAt" name="createdAt" th:value="${order.createdAt}" readonly>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="w-100 btn btn-primary btn-lg" type="submit">저장
+            </button>
+        </div>
+        <div class="col">
+            <button class="w-100 btn btn-secondary btn-lg"
+                    th:onclick="|location.href='@{/products/orders}'|"
+                    onclick="location.href='item.html'" type="button">취소
+            </button>
+        </div>
+    </div>
+</form>
+</body>
+</html>

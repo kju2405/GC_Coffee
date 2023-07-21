@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" xmlns:width="http://www.w3.org/1999/xhtml">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+  <title>Grids & Circles</title>
+</head>
+<body class="container-fluid">
+<h1>Grids & Circles</h1>
+<h2>Production Order Management</h2>
+<table class="table table-hover table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Order Id</th>
+    <th scope="col">Email</th>
+    <th scope="col">Address</th>
+    <th scope="col">PostCode</th>
+    <th scope="col">OrderStatus</th>
+    <th scope="col">CreatedAt</th>
+    <th scope="col">UpdatedAt</th>
+    <th scope="col">List</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="order: ${orders}">
+    <td th:text="${order.orderId}"></td>
+    <td ><a th:href="@{|/products/orders/${order.orderId}/edit|}" th:text="${order.email}"></a></td>
+    <td th:text="${order.address}"></td>
+    <td th:text="${order.postcode}"></td>
+    <td th:text="${order.orderStatus}"></td>
+    <td th:text="${order.createdAt}"></td>
+    <td th:text="${order.updatedAt}"></td>
+    <td><a th:href="@{|/products/orders/${order.orderId}|}" th:text="목록"></a></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
