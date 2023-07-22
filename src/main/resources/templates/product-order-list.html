@@ -19,8 +19,8 @@
   <tr>
     <th scope="col">Order Id</th>
     <th scope="col">Email</th>
-    <th scope="col">Address</th>
-    <th scope="col">PostCode</th>
+    <th scope="col">Phone Number</th>
+    <th scope="col">Bell Number</th>
     <th scope="col">OrderStatus</th>
     <th scope="col">CreatedAt</th>
     <th scope="col">UpdatedAt</th>
@@ -31,8 +31,8 @@
   <tr th:each="order: ${orders}">
     <td th:text="${order.orderId}"></td>
     <td ><a th:href="@{|/products/orders/${order.orderId}/edit|}" th:text="${order.email}"></a></td>
-    <td th:text="${order.address}"></td>
-    <td th:text="${order.postcode}"></td>
+    <td th:text="${order.phoneNum}"></td>
+    <td th:text="${order.bellNumber}"></td>
     <td th:text="${order.orderStatus}"></td>
     <td th:text="${order.createdAt}"></td>
     <td th:text="${order.updatedAt}"></td>

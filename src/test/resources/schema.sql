@@ -14,8 +14,8 @@ drop table if exists orders;
 create table orders(
     order_id varchar(50) primary key ,
     email varchar(50) not null ,
-    address varchar(200) not null ,
-    postcode varchar(200) not null ,
+    phone_number varchar(200) not null ,
+    bell_number varchar(200) not null ,
     order_status varchar(50) not null ,
     created_at datetime(6) not null,
     updated_at datetime(6) default null

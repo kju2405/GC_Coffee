@@ -40,11 +40,11 @@ public class OrderController {
     @PostMapping("/products/orders/{orderId}/edit")
     public String orderEdit(@RequestParam String orderId,
                             @RequestParam Email email,
-                            @RequestParam String address,
-                            @RequestParam String postcode,
+                            @RequestParam String phoneNum,
+                            @RequestParam String bellNumber,
                             @RequestParam OrderStatus orderStatus,
                             @RequestParam LocalDateTime createdAt) {
-        Order order = new Order(orderId, email, address, postcode, null, orderStatus, createdAt, LocalDateTime.now());
+        Order order = new Order(orderId, email, phoneNum, bellNumber, null, orderStatus, createdAt, LocalDateTime.now());
         orderService.updateOrder(order);
         return "redirect:/products/orders";
     }

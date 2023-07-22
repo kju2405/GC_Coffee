@@ -6,18 +6,18 @@ import java.util.List;
 public class Order {
     private final String orderId;
     private final Email email;
-    private String address;
-    private String postcode;
+    private String phoneNum;
+    private String bellNumber;
     private final List<OrderItem> orderItems;
     private OrderStatus orderStatus;
     private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Order(String orderId, Email email, String address, String postcode, List<OrderItem> orderItems, OrderStatus orderStatus, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Order(String orderId, Email email, String phoneNum, String bellNumber, List<OrderItem> orderItems, OrderStatus orderStatus, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.orderId = orderId;
         this.email = email;
-        this.address = address;
-        this.postcode = postcode;
+        this.phoneNum = phoneNum;
+        this.bellNumber = bellNumber;
         this.orderItems = orderItems;
         this.orderStatus = orderStatus;
         this.createdAt = createdAt;
@@ -32,12 +32,12 @@ public class Order {
         return email;
     }
 
-    public String getAddress() {
-        return address;
+    public String getPhoneNum() {
+        return phoneNum;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public String getBellNumber() {
+        return bellNumber;
     }
 
     public List<OrderItem> getOrderItems() {

@@ -27,8 +27,8 @@ public class OrderJdbcRepository implements OrderRepository{
     @Override
     @Transactional
     public Order insert(Order order) {
-        jdbcTemplate.update("insert into orders(order_id, email, address, postcode, order_status, created_at, updated_at)" +
-            " values(:orderId, :email, :address, :postcode, :orderStatus, :createdAt, :updatedAt)", toOrderParamMap(order));
+        jdbcTemplate.update("insert into orders(order_id, email, phone_number, bell_number, order_status, created_at, updated_at)" +
+            " values(:orderId, :email, :phoneNum, :bellNum, :orderStatus, :createdAt, :updatedAt)", toOrderParamMap(order));
         order.getOrderItems()
             .forEach(item -> jdbcTemplate.update("insert into order_items(order_id, product_id, category, price, quantity, created_at, updated_at)" +
                     "values(:orderId, :productId, :category, :price, :quantity, :createdAt, :updatedAt)",
@@ -50,7 +50,6 @@ public class OrderJdbcRepository implements OrderRepository{
 
     @Override
     public Order findOrdersById(String orderId) {
-//        return jdbcTemplate.query("select * from orders where order_id=:orderId", Collections.singletonMap("orderId", orderId), orderRowMapper());
         return jdbcTemplate.queryForObject("select * from orders where order_id=:orderId", Collections.singletonMap("orderId", orderId), orderRowMapper());
     }
 
@@ -58,8 +57,8 @@ public class OrderJdbcRepository implements OrderRepository{
     public Order update(Order order) {
         int update = jdbcTemplate.update("update orders set " +
             "email = :email," +
-            "address = :address," +
-            "postcode = :postcode," +
+            "phone_number = :phoneNum," +
+            "bell_number = :bellNum," +
             "order_status = :orderStatus," +
             "updated_at = :updatedAt " +
             "where order_id = :orderId", toOrderParamMap(order));
@@ -73,12 +72,12 @@ public class OrderJdbcRepository implements OrderRepository{
         return ((rs, rowNum) -> {
             String orderId = rs.getString("order_id");
             Email email = new Email(rs.getString("email"));
-            String address = rs.getString("address");
-            String postcode = rs.getString("postcode");
+            String phoneNum = rs.getString("phone_number");
+            String bellNum = rs.getString("bell_number");
             OrderStatus orderStatus = OrderStatus.valueOf(rs.getString("order_status"));
             LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
             LocalDateTime updatedAt = rs.getTimestamp("updated_at").toLocalDateTime();
-            return new Order(orderId, email, address, postcode, null, orderStatus, createdAt, updatedAt);
+            return new Order(orderId, email, phoneNum, bellNum, null, orderStatus, createdAt, updatedAt);
         });
     }
 
@@ -86,8 +85,8 @@ public class OrderJdbcRepository implements OrderRepository{
         return new MapSqlParameterSource()
             .addValue("orderId", order.getOrderId())
             .addValue("email", order.getEmail().getAddress())
-            .addValue("address", order.getAddress())
-            .addValue("postcode", order.getPostcode())
+            .addValue("phoneNum", order.getPhoneNum())
+            .addValue("bellNum", order.getBellNumber())
             .addValue("orderStatus", order.getOrderStatus().toString())
             .addValue("createdAt", Timestamp.valueOf(order.getCreatedAt()))
             .addValue("updatedAt", Timestamp.valueOf(order.getUpdatedAt()));
