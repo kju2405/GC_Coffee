@@ -38,8 +38,8 @@ class OrderJdbcRepositoryTest {
         productRepository.insert(product2);
         List<OrderItem> orderItems = List.of(new OrderItem(product1.getProductName(), product1.getProductId(), product1.getCategory(), product1.getPrice(), 3),
             new OrderItem(product2.getProductName(), product2.getProductId(), product2.getCategory(), product2.getPrice(), 2));
-        Order order1 = new Order(UUID.randomUUID().toString(), new Email("kju2405@gmail.com"), "경기도 수원시", "34234", orderItems, OrderStatus.ACCEPTED, LocalDateTime.now(), LocalDateTime.now());
-        Order order2 = new Order(UUID.randomUUID().toString(), new Email("kju2405@gmail.com"), "경기도 수원시", "34234", orderItems, OrderStatus.ACCEPTED, LocalDateTime.now(), LocalDateTime.now());
+        Order order1 = new Order(UUID.randomUUID().toString(), new Email("kju2405@gmail.com"), new Phone("01044443333"), "34234", orderItems, OrderStatus.ACCEPTED, LocalDateTime.now(), LocalDateTime.now());
+        Order order2 = new Order(UUID.randomUUID().toString(), new Email("kju2405@gmail.com"), new Phone("01044443333"), "34234", orderItems, OrderStatus.ACCEPTED, LocalDateTime.now(), LocalDateTime.now());
 
         //when
         orderRepository.insert(order1);
@@ -62,8 +62,8 @@ class OrderJdbcRepositoryTest {
         productRepository.insert(product2);
         List<OrderItem> orderItems = List.of(new OrderItem(product1.getProductName(), product1.getProductId(), product1.getCategory(), product1.getPrice(), 3),
             new OrderItem(product2.getProductName(), product2.getProductId(), product2.getCategory(), product2.getPrice(), 2));
-        Order order1 = new Order(UUID.randomUUID().toString(), new Email("kju2405@gmail.com"), "경기도 수원시", "34234", orderItems, OrderStatus.ACCEPTED, LocalDateTime.now(), LocalDateTime.now());
-        Order order2 = new Order(UUID.randomUUID().toString(), new Email("kju2405@gmail.com"), "경기도 수원시", "34234", orderItems, OrderStatus.ACCEPTED, LocalDateTime.now(), LocalDateTime.now());
+        Order order1 = new Order(UUID.randomUUID().toString(), new Email("kju2405@gmail.com"), new Phone("01040202405"), "34234", orderItems, OrderStatus.ACCEPTED, LocalDateTime.now(), LocalDateTime.now());
+        Order order2 = new Order(UUID.randomUUID().toString(), new Email("kju2405@gmail.com"),  new Phone("01044443333"), "34234", orderItems, OrderStatus.ACCEPTED, LocalDateTime.now(), LocalDateTime.now());
         orderRepository.insert(order1);
         orderRepository.insert(order2);
         List<Order> allOrders1 = orderRepository.findAllOrders();

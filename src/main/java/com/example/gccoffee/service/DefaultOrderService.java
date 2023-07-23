@@ -1,9 +1,6 @@
 package com.example.gccoffee.service;
 
-import com.example.gccoffee.model.Email;
-import com.example.gccoffee.model.Order;
-import com.example.gccoffee.model.OrderItem;
-import com.example.gccoffee.model.OrderStatus;
+import com.example.gccoffee.model.*;
 import com.example.gccoffee.repository.OrderRepository;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +17,7 @@ public class DefaultOrderService implements OrderService{
     }
 
     @Override
-    public Order createOrder(Email email, String address, String postcode, List<OrderItem> orderItems) {
+    public Order createOrder(Email email, Phone address, String postcode, List<OrderItem> orderItems) {
         Order order = new Order(
             UUID.randomUUID().toString(),
             email,

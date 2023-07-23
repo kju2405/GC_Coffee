@@ -6,14 +6,14 @@ import java.util.List;
 public class Order {
     private final String orderId;
     private final Email email;
-    private String phoneNum;
+    private Phone phoneNum;
     private String bellNumber;
     private final List<OrderItem> orderItems;
     private OrderStatus orderStatus;
     private final LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public Order(String orderId, Email email, String phoneNum, String bellNumber, List<OrderItem> orderItems, OrderStatus orderStatus, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Order(String orderId, Email email, Phone phoneNum, String bellNumber, List<OrderItem> orderItems, OrderStatus orderStatus, LocalDateTime createdAt, LocalDateTime updatedAt) {
         this.orderId = orderId;
         this.email = email;
         this.phoneNum = phoneNum;
@@ -32,7 +32,7 @@ public class Order {
         return email;
     }
 
-    public String getPhoneNum() {
+    public Phone getPhoneNum() {
         return phoneNum;
     }
 

@@ -72,7 +72,7 @@ public class OrderJdbcRepository implements OrderRepository{
         return ((rs, rowNum) -> {
             String orderId = rs.getString("order_id");
             Email email = new Email(rs.getString("email"));
-            String phoneNum = rs.getString("phone_number");
+            Phone phoneNum = new Phone(rs.getString("phone_number"));
             String bellNum = rs.getString("bell_number");
             OrderStatus orderStatus = OrderStatus.valueOf(rs.getString("order_status"));
             LocalDateTime createdAt = rs.getTimestamp("created_at").toLocalDateTime();
@@ -85,7 +85,7 @@ public class OrderJdbcRepository implements OrderRepository{
         return new MapSqlParameterSource()
             .addValue("orderId", order.getOrderId())
             .addValue("email", order.getEmail().getAddress())
-            .addValue("phoneNum", order.getPhoneNum())
+            .addValue("phoneNum", order.getPhoneNum().getPhoneNumber())
             .addValue("bellNum", order.getBellNumber())
             .addValue("orderStatus", order.getOrderStatus().toString())
             .addValue("createdAt", Timestamp.valueOf(order.getCreatedAt()))

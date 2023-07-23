@@ -3,6 +3,7 @@ package com.example.gccoffee.controller;
 import com.example.gccoffee.model.Email;
 import com.example.gccoffee.model.Order;
 import com.example.gccoffee.model.OrderStatus;
+import com.example.gccoffee.model.Phone;
 import com.example.gccoffee.service.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,7 +41,7 @@ public class OrderController {
     @PostMapping("/products/orders/{orderId}/edit")
     public String orderEdit(@RequestParam String orderId,
                             @RequestParam Email email,
-                            @RequestParam String phoneNum,
+                            @RequestParam Phone phoneNum,
                             @RequestParam String bellNumber,
                             @RequestParam OrderStatus orderStatus,
                             @RequestParam LocalDateTime createdAt) {
