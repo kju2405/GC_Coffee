@@ -44,7 +44,7 @@ public class OrderJdbcRepository implements OrderRepository{
 
     @Override
     public List<Order> findAllOrders() {
-        List<Order> orderList = jdbcTemplate.query("select * from orders", orderRowMapper());
+        List<Order> orderList = jdbcTemplate.query("select * from orders order by created_at", orderRowMapper());
         return orderList;
     }
 
